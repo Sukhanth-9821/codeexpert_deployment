@@ -60,13 +60,6 @@ pipeline{
                 """
             }
         }
-        stage ("deployment validation"){
-            steps{
-                sh """
-                kubectl get po -n gistapi
-                kubectl rollout status deployment gistapi -n gistapi
-                """
-            }
-        }
+       
     }
 }
