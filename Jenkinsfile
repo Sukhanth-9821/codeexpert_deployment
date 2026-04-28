@@ -5,14 +5,14 @@ pipeline{
         choice(name: "DEPLOY_ENV", choices: ["QA", "PROD"], description: "Select Environment")
     }
     environment{
-        GIT_REPO = "https:///${gituser}:${gitpasswd}@github.com/Sukhanth-9821/deployment_repo.git"
+        GIT_REPO = "https:///${gituser}:${gitpasswd}@github.com/Sukhanth-9821/codeexpert_deployment.git"
         BRANCH = 'master'
         FILE_PATH = "${params.DEPLOY_ENV == 'QA' ? 'gistapi/values-qa.yaml' : 'gistapi/values-prod.yaml'}"
     }
     stages{
         stage ("SCM Clone"){
             steps{
-                git 'https://github.com/Sukhanth-9821/deployment_repo.git'
+                git 'https://github.com/Sukhanth-9821/codeexpert_deployment.git'
             }
 
         }
