@@ -15,7 +15,7 @@ service:
   targetPort: 8000
 
 ingress:
-  enabled: true
+  enabled: false
   className: nginx
   host: fastapi.local
   path: /
