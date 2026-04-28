@@ -7,7 +7,7 @@ pipeline{
     environment{
         GIT_REPO = "https:///${gituser}:${gitpasswd}@github.com/Sukhanth-9821/codeexpert_deployment.git"
         BRANCH = 'master'
-        FILE_PATH = "${params.DEPLOY_ENV == 'QA' ? 'gistapi/values-qa.yaml' : 'gistapi/values-prod.yaml'}"
+        FILE_PATH = "${params.DEPLOY_ENV == 'QA' ? 'gistapi/dev/values.yaml' : 'gistapi/prod/values.yaml'}"
     }
     stages{
         stage ("SCM Clone"){
@@ -45,7 +45,7 @@ pipeline{
             git config user.name "sukhanth"
             git add ${FILE_PATH} 
             git commit -m "Update image tag to ${params.IMAGE_TAG}" || echo "No changes to commit" 
-            git push "https:///${gituser}:${gitpasswd}@github.com/Sukhanth-9821/deployment_repo.git" ${BRANCH} 
+            git push "https:///${gituser}:${gitpasswd}@github.com/Sukhanth-9821/codeexpert_deployment.git" ${BRANCH} 
             
             """
 
