@@ -1,0 +1,24 @@
+replicaCount: 2
+
+image:
+  repository:  host.minikube.internal:8085/codeexperts
+  tag: 70
+  pullPolicy: Always
+
+
+imagePullSecrets:
+  - name: nexus-secret
+  
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: true
+  className: nginx
+  host: fastapi.local
+  path: /
+  pathType: Prefix
+
+resources: {}
